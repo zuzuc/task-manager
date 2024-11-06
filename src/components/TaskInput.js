@@ -21,10 +21,10 @@ function TaskInput({ onAddTask }) {
     };
 
     // Pass new task up to parent
-    onAddTask(newTask);
+    onAddTask(newTask); // Calls the parent function handleAddTask with newTask
 
     //Reset input fields
-    setTask("");
+    setTask(""); //Reset the input
     setPriority("low");
   };
 

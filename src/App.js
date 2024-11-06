@@ -6,10 +6,11 @@ import TaskList from "./components/TaskList";
 function TaskManager() {
   const [tasks, setTasks] = useState([]);
   const handleAddTask = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTasks((prevTasks) => [...prevTasks, newTask]); // Adds the new task to the tasks array
 };
+
   return (
-    <div className="App">
+    <div>
       <div className="title" style={{ textAlign: 'center' }}>
         <h1>Task Manager</h1>
       </div>
