@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function TaskInput({ onAddTask }) {
   const [task, setTask] = useState("");
-  // const [tasks, setTasks] = useState([]);
   const [priority, setPriority] = useState("low"); //Optional priority field
 
   const handleSubmit = (e) => {
