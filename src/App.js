@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/landing-page/LandingPage";
 import TaskInput from "./components/TaskInput";
@@ -18,15 +18,9 @@ function App() {
       </div>
       <main>
         <Routes>
-          <Route exact path="/" element={LandingPage}>
-            <LandingPage />
-          </Route>
-          <Route exact path="/TaskInput" element={TaskInput}>
-            <TaskInput onAddTask={handleAddTask} />
-          </Route>
-          <Route exact path="/TaskInput" element={TaskInput}>
-            <TaskList tasks={tasks} />
-          </Route>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/task-input" element={<TaskInput onAddTask={handleAddTask} />} />
+          <Route path="/task-list" element={<TaskList tasks={tasks} />} />
         </Routes>
       </main>
     </div>

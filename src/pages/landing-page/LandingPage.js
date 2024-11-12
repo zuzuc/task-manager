@@ -23,7 +23,7 @@ function LandingPage() {
     setUnloading(true);
     startTransition(() => {
       // Use React Router's navigate instead of Next.js's router.push
-      navigate("/task-manager");
+      navigate("/task-input");
     });
   }
 
@@ -37,7 +37,6 @@ function LandingPage() {
             onClick={handleTaskManagerClick}
           >
             {isPending ? "Loading..." : "Task Manager"}
-            Task Manager
           </button>
         </div>
       </div>
