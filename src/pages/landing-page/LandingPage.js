@@ -1,11 +1,10 @@
-"use client";
-import { useRouter } from 'next/navigation'; 
 import React, { useEffect, useState, useTransition } from "react";
+import { useNavigate } from "react-router-dom"; // Import the useNavigate hook from React Router
 import "./LandingPage.css";
 import classNames from "classnames";
 
 function LandingPage() {
-  const router = useRouter();
+  const navigate = useNavigate(); // Replace useRouter with useNavigate
   const [buttonless, setButtonless] = useState(true);
   const [unloading, setUnloading] = useState(false);
   const [isPending, startTransition] = useTransition(); // new transition state
@@ -23,7 +22,8 @@ function LandingPage() {
   function handleTaskManagerClick() {
     setUnloading(true);
     startTransition(() => {
-        router.push("/task-manager");
+      // Use React Router's navigate instead of Next.js's router.push
+      navigate("/task-manager");
     });
   }
 
@@ -34,7 +34,8 @@ function LandingPage() {
           <button
             className={classNames({ "end-position": !buttonless })}
             disabled={isPending} // disable button while transition is pending
-            onClick={handleTaskManagerClick}>
+            onClick={handleTaskManagerClick}
+          >
             {isPending ? "Loading..." : "Task Manager"}
             Task Manager
           </button>
