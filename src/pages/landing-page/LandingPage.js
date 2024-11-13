@@ -36,10 +36,17 @@ function LandingPage() {
             disabled={isPending} // disable button while transition is pending
             onClick={handleTaskManagerClick}
           >
-            {isPending ? "Loading..." : "Task Manager"}
+            {isPending ? "Loading..." : "Manage your tasks"}
           </button>
         </div>
       </div>
+      <div
+        className={classNames("background-landscape", {
+          "end-position": buttonless,
+          unloading,
+        })}
+        style={{ backgroundImage: 'url("/images/landscape-01.jpg")' }}
+      ></div>
     </div>
   );
 }
