@@ -9,12 +9,28 @@
   background-color: rgb(236, 249, 255, 0.5);
   user-select: none;
 
-  .task-input-form {
+  form {
     display: flex;
     align-items: center;
     height: 100vh;
     justify-content: center;
     width: 100vw;
-    z-index: 1;
+  }
+
+  input,
+  select,
+  button {
+    height: unset;
+    padding: 2vh 3.5vw 2vh 3.5vw;
+    margin: 0.5vw;
+
+    background-color: transparent;
+    border: solid 1px;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: RalewayThin, monospace;
+    font-size: 2vw;
+    font-weight: bold;
+    letter-spacing: 0.1vw;
   }
 }
