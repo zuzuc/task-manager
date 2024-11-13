@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useTransition } from "react";
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook from React Router
 import "./LandingPage.css";
+import useIsMobile from "../../hookers/useIsMobile";
 import classNames from "classnames";
 
 function LandingPage() {
+  const isMobile = useIsMobile();
   const navigate = useNavigate(); // Replace useRouter with useNavigate
   const [buttonless, setButtonless] = useState(true);
   const [unloading, setUnloading] = useState(false);
@@ -28,7 +30,7 @@ function LandingPage() {
   }
 
   return (
-    <div className={classNames("landing-page")}>
+    <div className={classNames("landing-page", {mobile : isMobile })}>
       <div className="text-content">
         <div className="buttons-content">
           <button
