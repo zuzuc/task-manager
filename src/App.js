@@ -13,9 +13,6 @@ function App() {
 
   return (
     <div>
-      <div className="title" style={{ textAlign: "center" }}>
-        <h1>Task Manager</h1>
-      </div>
       <main>
         <Routes>
           <Route path="/" element={<LandingPage />} />
