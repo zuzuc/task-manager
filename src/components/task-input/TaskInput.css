@@ -21,7 +21,7 @@
   select,
   button {
     height: unset;
-    padding: 2vh 3.5vw 2vh 3.5vw;
+    padding: 1vh 2.5vw 1vh 2.5vw;
     margin: 0.5vw;
 
     background-color: transparent;
@@ -29,7 +29,7 @@
     border-radius: 0;
     cursor: pointer;
     font-family: RalewayThin, monospace;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: bold;
     letter-spacing: 0.1vw;
   }
