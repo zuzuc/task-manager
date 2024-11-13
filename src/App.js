@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/landing-page/LandingPage";
-import TaskInput from "./components/TaskInput";
+import TaskInput from "./components/task-input/TaskInput";
 import TaskList from "./components/TaskList";
 
 function App() {
