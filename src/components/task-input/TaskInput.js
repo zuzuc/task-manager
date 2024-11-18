@@ -8,6 +8,7 @@ function TaskInput({ onAddTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // If task is empty alert the user and cancel
     if (task.trim() === "") {
       alert("Please enter a task!");
       return;
@@ -16,8 +17,8 @@ function TaskInput({ onAddTask }) {
     // Create a new task object
     const newTask = {
       id: Date.now(),
-      task,
-      priority,
+      task: task,
+      priority: priority,
       completed: false,
     };
 
