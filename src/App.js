@@ -13,13 +13,14 @@ function App() {
 
   return (
     <div>
-      <main>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/task-input" element={<TaskInput onAddTask={handleAddTask} />} />
-          <Route path="/task-list" element={<TaskList tasks={tasks} />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/task-input"
+          element={<TaskInput onAddTask={handleAddTask} />}
+        />
+        <Route path="/task-list" element={<TaskList tasks={tasks} />} />
+      </Routes>
     </div>
   );
 }
