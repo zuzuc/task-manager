@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TaskInput from "../../components/task-input/TaskInput";
-import TaskList from "../../components/TaskList";
+import TaskList from "../../components/task-list/TaskList";
 
 function TaskManagerPage() {
   const [tasks, setTasks] = useState([]);
@@ -9,7 +9,7 @@ function TaskManagerPage() {
   };
 
   return (
-    <div className="task-manager-page-content">
+    <div className="task-manager-page">
       <TaskInput onAddTask={handleAddTask} />
       <TaskList tasks={tasks} />
     </div>
