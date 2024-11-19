@@ -25,7 +25,7 @@ function LandingPage() {
     setUnloading(true);
     startTransition(() => {
       // Use React Router's navigate instead of Next.js's router.push
-      navigate("/task-input");
+      navigate("/task-manager");
     });
   }
 
