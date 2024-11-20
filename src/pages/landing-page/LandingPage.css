@@ -6,7 +6,7 @@
   bottom: 0;
   left: 0;
 
-  background-color: whitesmoke;
+  background-color: #000b58;
   user-select: none;
 
   &.mobile {
