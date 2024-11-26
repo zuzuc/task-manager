@@ -9,8 +9,8 @@
   .task-list-results {
     display: flex;
     align-items: flex-start;
-    height: 50vh;
     justify-content: center;
+    height: 40vh;
     width: 100vw;
   }
 }

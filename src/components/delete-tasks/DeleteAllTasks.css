@@ -1,14 +1,24 @@
+.delete-all-tasks-container {
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .delete-all-tasks-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .delete-all-tasks-button:hover {
-    background-color: darkred;
+  background-color: darkred;
 }

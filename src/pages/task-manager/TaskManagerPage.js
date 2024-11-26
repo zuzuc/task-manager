@@ -27,10 +27,10 @@ function TaskManagerPage() {
   return (
     <div className="task-manager-page">
       <TaskInput onAddTask={handleAddTask} />
-      <TaskList tasks={tasks} />
       <DeleteAllTasks onClick={handleDeleteAllTasks}>
         Delete All Tasks
       </DeleteAllTasks>
+      <TaskList tasks={tasks} />
     </div>
   );
 }
