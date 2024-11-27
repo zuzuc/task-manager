@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./TaskManagerPage.css";
 import TaskInput from "../../components/task-input/TaskInput";
 import TaskList from "../../components/task-list/TaskList";
 import DeleteAllTasks from "../../components/delete-tasks/DeleteAllTasks";
@@ -25,12 +26,15 @@ function TaskManagerPage() {
   };
 
   return (
-    <div className="task-manager-page">
-      <TaskInput onAddTask={handleAddTask} />
-      <DeleteAllTasks onClick={handleDeleteAllTasks}>
-        Delete All Tasks
-      </DeleteAllTasks>
-      <TaskList tasks={tasks} />
+    <div className="task-manager-container">
+      <div className="task-manager">
+        <h1>Task Manager</h1>
+        <TaskInput onAddTask={handleAddTask} />
+        <DeleteAllTasks onClick={handleDeleteAllTasks}>
+          Delete All Tasks
+        </DeleteAllTasks>
+        <TaskList tasks={tasks} />
+      </div>
     </div>
   );
 }
