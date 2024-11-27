@@ -35,6 +35,7 @@ function TaskInput({ onAddTask }) {
       <form className="task-input-form" onSubmit={handleSubmit}>
         <input
           type="text"
+          className="task-input"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           placeholder="Enter a new task"
