@@ -5,7 +5,6 @@ import LandingPage from "./pages/landing-page/LandingPage";
 import TaskManagerPage from "./pages/task-manager/TaskManagerPage";
 
 function App() {
-
   return (
     <div>
       <Routes>
