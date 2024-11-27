@@ -6,11 +6,26 @@
   bottom: 0;
   left: 0;
   padding: 0;
+  margin-top: 2rem;
+}
 
-  .task-item-container {
-    display: flex;
-    align-items: flex-start;
-  }
+.task-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 1rem;
+  margin-right: 1.5rem;
+}
+
+.task-item-label {
+  margin-left: 1rem;
 }
 
 .x-button {
