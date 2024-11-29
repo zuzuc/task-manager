@@ -28,15 +28,20 @@
   margin-left: 1rem;
 }
 
+.line-through {
+  text-decoration: line-through;
+  color: gray;
+}
+
 .x-button {
   background: white;
-  color: #6B7280;
+  color: #6b7280;
   border: none;
   cursor: pointer;
 }
 
 .x-button:hover {
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .x-button-icon {
