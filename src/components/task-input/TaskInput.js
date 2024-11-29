@@ -8,6 +8,7 @@ function TaskInput({ onAddTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Don´t want user to add empty strings
     // If task is empty alert the user and cancel
     if (task.trim() === "") {
       alert("Please enter a task!");

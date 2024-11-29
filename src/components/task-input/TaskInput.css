@@ -1,5 +1,6 @@
 .task-input {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   position: relative;
   top: 0;
   right: 0;
@@ -11,7 +12,6 @@
   padding: 0.875rem;
   font-size: 1rem;
   margin-top: 1rem;
-
   user-select: none;
 
   form {
@@ -25,7 +25,7 @@
   select,
   button {
     height: unset;
-    padding: 1vh 2.5vw 1vh 2.5vw;
+    padding: 1vh 2vw 1vh 2vw;
     margin: 0.5vw;
 
     background-color: transparent;
@@ -33,7 +33,7 @@
     border-radius: 0;
     cursor: pointer;
     font-family: RalewayThin, monospace;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     font-weight: bold;
     letter-spacing: 0.1vw;
   }
