@@ -43,7 +43,6 @@ function TaskInput({ onAddTask }) {
     <div className="task-input">
       <form className="task-input-form" onSubmit={handleSubmit}>
         <label htmlFor="task">
-          Task:
           <input
             id="task"
             type="text"
@@ -55,7 +54,6 @@ function TaskInput({ onAddTask }) {
           />
         </label>
         <label htmlFor="priority">
-          Priority:
           <select id="priority" value={priority} onChange={handlePriorityChange} aria-label="Select priority level">
             <option value="low">Low</option>
             <option value="medium">Medium</option>

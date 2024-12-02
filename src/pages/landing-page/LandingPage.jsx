@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useTransition } from "react";
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook from React Router
 import "./LandingPage.css";
-import useIsMobile from "../../hookers/useIsMobile";
+import useIsMobile from "../../hooks/useIsMobile";
 import classNames from "classnames";
 
 function LandingPage() {
