@@ -1,6 +1,9 @@
 import "./TaskList.css";
 
 function TaskList({ tasks, setTasks }) {
+  const handleTaskToggle = (id) => () => toggleTaskCompletion(id);
+  const handleTaskDelete = (id) => () => deleteTask(id);
+
   const deleteAllTasks = () => {
     setTasks([]); // Clear all tasks
     localStorage.removeItem("tasks"); // Remove from localStorage
@@ -40,7 +43,7 @@ function TaskList({ tasks, setTasks }) {
             <input
               type="checkbox"
               checked={task.completed}
-              onChange={() => toggleTaskCompletion(task.id)}
+              onChange={handleTaskToggle(task.id)}
               aria-label={`Mark ${task.task} as ${task.completed ? "incomplete" : "complete"}`}
             />
             <span
@@ -52,7 +55,7 @@ function TaskList({ tasks, setTasks }) {
               {task.task} - Priority: {task.priority}
             </span>
           </div>
-          <button className="x-button" onClick={() => deleteTask(task.id)} aria-label={`Delete task ${task.task}`}>
+          <button className="x-button" onClick={handleTaskDelete(task.id)} aria-label={`Delete task ${task.task}`}>
             <svg
               className="x-button-icon"
               fill="none"
