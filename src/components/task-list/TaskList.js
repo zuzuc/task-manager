@@ -1,7 +1,7 @@
 import "./TaskList.css";
 
 function TaskList({ tasks, setTasks }) {
-  const handleDeleteAllTasks = () => {
+  const deleteAllTasks = () => {
     setTasks([]); // Clear all tasks
     localStorage.removeItem("tasks"); // Remove from localStorage
   };
@@ -15,17 +15,10 @@ function TaskList({ tasks, setTasks }) {
     // setTasks([...tasks].filter(task => task.id !== id));
   };
 
-  const completeTask = (id) => {
+  const toggleTaskCompletion = (id) => {
     const completedTasks = tasks.map((task) =>
       task.id === id ? { ...task, completed: !task.completed } : task
-    );
-    console.log(completedTasks);
-    // const completedTasks = tasks.map((task) => {
-    //   if (task.id === id) {
-    //     task.completed = !task.completed;
-    //   }
-    //   return task;
-    // });
+      );
 
     setTasks(completedTasks); // Update state in parent
     localStorage.setItem("tasks", JSON.stringify(completedTasks));
@@ -36,7 +29,7 @@ function TaskList({ tasks, setTasks }) {
       <div className="delete-all-tasks-container">
         <button
           className="delete-all-tasks-button"
-          onClick={handleDeleteAllTasks}
+          onClick={deleteAllTasks}
         >
           Delete All Tasks
         </button>
@@ -47,7 +40,8 @@ function TaskList({ tasks, setTasks }) {
             <input
               type="checkbox"
               checked={task.completed}
-              onChange={() => completeTask(task.id)}
+              onChange={() => toggleTaskCompletion(task.id)}
+              aria-label={`Mark ${task.task} as ${task.completed ? "incomplete" : "complete"}`}
             />
             <span
               className={`task-item-label ${
@@ -57,14 +51,14 @@ function TaskList({ tasks, setTasks }) {
               {task.title}
               {task.task} - Priority: {task.priority}
             </span>
-            {/* {task.task} - Priority: {task.priority} */}
           </div>
-          <button className="x-button" onClick={() => deleteTask(task.id)}>
+          <button className="x-button" onClick={() => deleteTask(task.id)} aria-label={`Delete task ${task.task}`}>
             <svg
               className="x-button-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
