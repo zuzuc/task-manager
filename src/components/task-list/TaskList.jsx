@@ -21,7 +21,7 @@ function TaskList({
           <div className="task-item">
             <input
               type="checkbox"
-              checked={task.completed}
+              checked={task.completed ? true : false}
               onChange={handleTaskToggle(task.id)}
               aria-label={`Mark ${task.task} as ${
                 task.completed ? "incomplete" : "complete"
