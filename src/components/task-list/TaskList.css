@@ -34,6 +34,15 @@
   color: gray;
 }
 
+.task-item-input {
+  margin-left: 8px;
+  width: 100%;
+  border: none;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0,  0, 0.6);
+  padding: 6px 8px;
+  font-size: 16px;
+}
+
 .x-button {
   background: white;
   color: #6b7280;

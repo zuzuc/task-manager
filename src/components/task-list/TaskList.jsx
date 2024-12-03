@@ -6,10 +6,13 @@ function TaskList({
   deleteAllTasks,
   toggleTaskCompletion,
   markAsEditing,
+  updateTask,
 }) {
   const handleTaskToggle = (id) => () => toggleTaskCompletion(id);
   const handleTaskDelete = (id) => () => deleteSingleTask(id);
   const handleTaskEditing = (id) => () => markAsEditing(id);
+  const handleTaskUpdate = (id) => (event) => updateTask(id, { task: event.target.value });
+  const handleTaskBlur = (id) => (event) => updateTask(id, { task: event.target.value });
 
   return (
     <ul className="task-list">
@@ -43,7 +46,9 @@ function TaskList({
               <input
                 type="text"
                 className="task-item-input"
-                value="Finish task"
+                defaultValue={task.task}
+                onChange={handleTaskUpdate(task.id)}
+                onBlur={handleTaskBlur(task.id)}
                 autoFocus
               />
             )}

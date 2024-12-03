@@ -43,6 +43,7 @@ const useTasks = () => {
     );
   };
 
+  // resets the editing property to false after the task has been updated
   const updateTask = (id, updatedTask) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -50,6 +51,7 @@ const useTasks = () => {
       )
     );
   };
+
   return {
     tasks,
     setTasks,
