@@ -22,11 +22,11 @@ function TaskManagerPage() {
         <TaskInput onAddTask={addTask} />
         <TaskList
           tasks={tasks}
-          deleteSingleTask={deleteSingleTask}
-          deleteAllTasks={deleteAllTasks}
-          toggleTaskCompletion={toggleTaskCompletion}
-          markAsEditing={markAsEditing}
-          updateTask={updateTask}
+          onDeleteSingleTask={deleteSingleTask}
+          onDeleteAllTasks={deleteAllTasks}
+          onToggleTaskCompletion={toggleTaskCompletion}
+          onMarkAsEditing={markAsEditing}
+          onUpdateTask={updateTask}
         />
       </div>
     </div>

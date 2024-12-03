@@ -2,22 +2,28 @@ import "./TaskList.css";
 
 function TaskList({
   tasks,
-  deleteSingleTask,
-  deleteAllTasks,
-  toggleTaskCompletion,
-  markAsEditing,
-  updateTask,
+  onDeleteSingleTask,
+  onDeleteAllTasks,
+  onToggleTaskCompletion,
+  onMarkAsEditing,
+  onUpdateTask,
 }) {
-  const handleTaskToggle = (id) => () => toggleTaskCompletion(id);
-  const handleTaskDelete = (id) => () => deleteSingleTask(id);
-  const handleTaskEditing = (id) => () => markAsEditing(id);
-  const handleTaskUpdate = (id) => (event) => updateTask(id, { task: event.target.value });
-  const handleTaskBlur = (id) => (event) => updateTask(id, { task: event.target.value });
+  const handleTaskToggle = (id) => () => onToggleTaskCompletion(id);
+  const handleTaskDelete = (id) => () => onDeleteSingleTask(id);
+  const handleTaskEditing = (id) => () => onMarkAsEditing(id);
+  const handleTaskUpdate = (id) => (event) => {
+    if (event.nativeEvent.key === "Enter") {
+      onUpdateTask(id, { task: event.target.value });
+    }
+  };
+
+  const handleTaskBlur = (id) => (event) =>
+    onUpdateTask(id, { task: event.target.value });
 
   return (
     <ul className="task-list">
       <div className="delete-all-tasks-container">
-        <button className="delete-all-tasks-button" onClick={deleteAllTasks}>
+        <button className="delete-all-tasks-button" onClick={onDeleteAllTasks}>
           Delete All Tasks
         </button>
       </div>
@@ -26,7 +32,7 @@ function TaskList({
           <div className="task-item">
             <input
               type="checkbox"
-              checked={task.completed ? true : false}
+              checked={task.completed}
               onChange={handleTaskToggle(task.id)}
               aria-label={`Mark ${task.task} as ${
                 task.completed ? "incomplete" : "complete"
@@ -47,7 +53,7 @@ function TaskList({
                 type="text"
                 className="task-item-input"
                 defaultValue={task.task}
-                onChange={handleTaskUpdate(task.id)}
+                onKeyUp={handleTaskUpdate(task.id)}
                 onBlur={handleTaskBlur(task.id)}
                 autoFocus
               />

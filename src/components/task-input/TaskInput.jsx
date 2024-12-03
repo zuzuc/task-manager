@@ -33,7 +33,7 @@ function TaskInput({ onAddTask }) {
     };
 
     // Pass new task up to parent
-    onAddTask(newTask); // Calls the parent function handleAddTask with newTask
+    onAddTask(newTask);
 
     //Reset input fields
     setTask(""); //Reset the input
