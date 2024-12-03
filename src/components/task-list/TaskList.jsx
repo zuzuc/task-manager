@@ -5,9 +5,11 @@ function TaskList({
   deleteSingleTask,
   deleteAllTasks,
   toggleTaskCompletion,
+  markAsEditing,
 }) {
   const handleTaskToggle = (id) => () => toggleTaskCompletion(id);
   const handleTaskDelete = (id) => () => deleteSingleTask(id);
+  const handleTaskEditing = (id) => () => markAsEditing(id);
 
   return (
     <ul className="task-list">
@@ -27,14 +29,24 @@ function TaskList({
                 task.completed ? "incomplete" : "complete"
               }`}
             />
-            <span
-              className={`task-item-label ${
-                task.completed ? "line-through" : ""
-              }`}
-            >
-              {task.title}
-              {task.task} - Priority: {task.priority}
-            </span>
+            {!task.editing ? (
+              <span
+                onDoubleClick={handleTaskEditing(task.id)}
+                className={`task-item-label ${
+                  task.completed ? "line-through" : ""
+                }`}
+              >
+                {task.title}
+                {task.task} - Priority: {task.priority}
+              </span>
+            ) : (
+              <input
+                type="text"
+                className="task-item-input"
+                value="Finish task"
+                autoFocus
+              />
+            )}
           </div>
           <button
             className="x-button"

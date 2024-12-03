@@ -29,6 +29,7 @@ function TaskInput({ onAddTask }) {
       task: task,
       priority: priority,
       completed: false,
+      editing: false,
     };
 
     // Pass new task up to parent
