@@ -11,26 +11,23 @@ function TaskList({
   const handleTaskToggle = (id) => () => onToggleTaskCompletion(id);
   const handleTaskDelete = (id) => () => onDeleteSingleTask(id);
   const handleTaskEditing = (id) => () => onMarkAsEditing(id);
+  const validateAndSaveTask = (id, value, fallbackValue, onUpdateTask) => {
+    const trimmedValue = value.trim();
+    if (trimmedValue.length === 0) {
+      onUpdateTask(id, { task: fallbackValue, editing: false });
+    } else {
+      onUpdateTask(id, { task: trimmedValue, editing: false });
+    }
+  };
+
   const handleTaskUpdate = (id, fallbackValue) => (event) => {
-    const value = event.target.value.trim(); // Trim whitespace
     if (event.nativeEvent.key === "Enter") {
-      if (value.length === 0) {
-        // Revert to fallback value if empty
-        onUpdateTask(id, { task: fallbackValue, editing: false });
-      } else {
-        // Update with trimmed value
-        onUpdateTask(id, { task: value }); // Ensure editing mode exits
-      }
+      validateAndSaveTask(id, event.target.value, fallbackValue, onUpdateTask);
     }
   };
 
   const handleTaskBlur = (id, fallbackValue) => (event) => {
-    const value = event.target.value.trim();
-    if (value.length === 0) {
-      onUpdateTask(id, { task: fallbackValue, editing: false });
-    } else {
-      onUpdateTask(id, { task: value });
-    }
+    validateAndSaveTask(id, event.target.value, fallbackValue, onUpdateTask);
   };
 
   return (
