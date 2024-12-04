@@ -11,14 +11,27 @@ function TaskList({
   const handleTaskToggle = (id) => () => onToggleTaskCompletion(id);
   const handleTaskDelete = (id) => () => onDeleteSingleTask(id);
   const handleTaskEditing = (id) => () => onMarkAsEditing(id);
-  const handleTaskUpdate = (id) => (event) => {
+  const handleTaskUpdate = (id, fallbackValue) => (event) => {
+    const value = event.target.value.trim(); // Trim whitespace
     if (event.nativeEvent.key === "Enter") {
-      onUpdateTask(id, { task: event.target.value });
+      if (value.length === 0) {
+        // Revert to fallback value if empty
+        onUpdateTask(id, { task: fallbackValue, editing: false });
+      } else {
+        // Update with trimmed value
+        onUpdateTask(id, { task: value }); // Ensure editing mode exits
+      }
     }
   };
 
-  const handleTaskBlur = (id) => (event) =>
-    onUpdateTask(id, { task: event.target.value });
+  const handleTaskBlur = (id, fallbackValue) => (event) => {
+    const value = event.target.value.trim();
+    if (value.length === 0) {
+      onUpdateTask(id, { task: fallbackValue, editing: false });
+    } else {
+      onUpdateTask(id, { task: value });
+    }
+  };
 
   return (
     <ul className="task-list">
@@ -53,8 +66,8 @@ function TaskList({
                 type="text"
                 className="task-item-input"
                 defaultValue={task.task}
-                onKeyUp={handleTaskUpdate(task.id)}
-                onBlur={handleTaskBlur(task.id)}
+                onKeyUp={handleTaskUpdate(task.id, task.task)} // Pass the saved task as fallback
+                onBlur={handleTaskBlur(task.id, task.task)} // Pass the saved task as fallback
                 autoFocus
               />
             )}
