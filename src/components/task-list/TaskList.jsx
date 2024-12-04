@@ -23,6 +23,9 @@ function TaskList({
   const handleTaskUpdate = (id, fallbackValue) => (event) => {
     if (event.nativeEvent.key === "Enter") {
       validateAndSaveTask(id, event.target.value, fallbackValue, onUpdateTask);
+    } else if (event.nativeEvent.key === "Escape") {
+      // Revert to fallback value and exit editing mode
+      onUpdateTask(id, { task: fallbackValue, editing: false });
     }
   };
 
@@ -63,8 +66,8 @@ function TaskList({
                 type="text"
                 className="task-item-input"
                 defaultValue={task.task}
-                onKeyUp={handleTaskUpdate(task.id, task.task)} // Pass the saved task as fallback
-                onBlur={handleTaskBlur(task.id, task.task)} // Pass the saved task as fallback
+                onKeyUp={handleTaskUpdate(task.id, task.task)} // Handles Enter and Escape - Pass the saved task as fallback
+                onBlur={handleTaskBlur(task.id, task.task)} // Hanles blur to save or revert - Pass the saved task as fallback
                 autoFocus
               />
             )}
