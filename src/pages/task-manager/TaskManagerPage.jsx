@@ -3,6 +3,7 @@ import "./TaskManagerPage.css";
 import useTasks from "../../hooks/useTasks";
 import TaskInput from "../../components/task-input/TaskInput";
 import TaskList from "../../components/task-list/TaskList";
+import NoTasks from "../../components/no-tasks-display/NoTasks";
 
 function TaskManagerPage() {
   const {
@@ -20,14 +21,18 @@ function TaskManagerPage() {
       <div className="task-manager">
         <h1>Task Manager</h1>
         <TaskInput onAddTask={addTask} />
-        <TaskList
-          tasks={tasks}
-          onDeleteSingleTask={deleteSingleTask}
-          onDeleteAllTasks={deleteAllTasks}
-          onToggleTaskCompletion={toggleTaskCompletion}
-          onMarkAsEditing={markAsEditing}
-          onUpdateTask={updateTask}
-        />
+        {tasks.length > 0 ? (
+          <TaskList
+            tasks={tasks}
+            onDeleteSingleTask={deleteSingleTask}
+            onDeleteAllTasks={deleteAllTasks}
+            onToggleTaskCompletion={toggleTaskCompletion}
+            onMarkAsEditing={markAsEditing}
+            onUpdateTask={updateTask}
+          />
+        ) : (
+          <NoTasks />
+        )}
       </div>
     </div>
   );
