@@ -1,14 +1,19 @@
 .task-manager-container {
   background-color: rgb(236, 249, 255, 0.5);
   min-height: 100vh;
-  padding: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.625rem;
+  box-sizing: border-box;
+  display: flex; /* Enable Flexbox for centering the task-manager */
+  justify-content: center; /* Horizontally center task-manager */
+  align-items: center; /* Vertically center task-manager */
 }
 
 .task-manager {
   max-width: 44rem;
   color: #374151;
   margin: auto;
-  margin-top: 30px;
   padding: 2rem;
   background: white;
   border-radius: 0.25rem;

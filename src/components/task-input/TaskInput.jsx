@@ -41,30 +41,35 @@ function TaskInput({ onAddTask }) {
   };
 
   return (
-    <div className="task-input">
-      <form className="task-input-form" onSubmit={handleSubmit}>
-        <label htmlFor="task">
-          <input
-            id="task"
-            type="text"
-            className="task-input"
-            value={task}
-            onChange={handleTaskChange}
-            placeholder="Enter a new task"
-            aria-required="true"
-          />
-        </label>
-        <label htmlFor="priority">
-          <select id="priority" value={priority} onChange={handlePriorityChange} aria-label="Select priority level">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-        </label>
-
-        <button type="submit">Add Task</button>
-      </form>
-    </div>
+    <form className="task-input-form" onSubmit={handleSubmit}>
+      <label htmlFor="task">
+        <input
+          id="task"
+          type="text"
+          className="task-input"
+          value={task}
+          onChange={handleTaskChange}
+          placeholder="Enter a new task"
+          aria-required="true"
+        />
+      </label>
+      <label htmlFor="priority">
+        <select
+          id="priority"
+          className="priority-select"
+          value={priority}
+          onChange={handlePriorityChange}
+          aria-label="Select priority level"
+        >
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <button type="submit" className="add-task-button">
+        Add Task
+      </button>
+    </form>
   );
 }
 
