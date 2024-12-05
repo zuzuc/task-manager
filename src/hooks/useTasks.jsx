@@ -33,16 +33,6 @@ const useTasks = () => {
     );
   };
 
-  const markAsEditing = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id
-          ? { ...task, editing: true }
-          : { ...task, editing: false }
-      )
-    );
-  };
-
   // resets the editing property to false after the task has been updated
   const updateTask = (id, updatedTask) => {
     setTasks((prevTasks) =>
@@ -59,7 +49,6 @@ const useTasks = () => {
     deleteSingleTask,
     deleteAllTasks,
     toggleTaskCompletion,
-    markAsEditing,
     updateTask,
   };
 };

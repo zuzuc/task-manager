@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./TaskList.css";
 
 function TaskList({
@@ -5,32 +6,34 @@ function TaskList({
   onDeleteSingleTask,
   onDeleteAllTasks,
   onToggleTaskCompletion,
-  onMarkAsEditing,
   onUpdateTask,
 }) {
+  const [editingTaskId, setEditingTaskId] = useState(null); // Track which task is being edited
+
   const handleTaskToggle = (id) => () => onToggleTaskCompletion(id);
   const handleTaskDelete = (id) => () => onDeleteSingleTask(id);
-  const handleTaskEditing = (id) => () => onMarkAsEditing(id);
-  const validateAndSaveTask = (id, value, fallbackValue, onUpdateTask) => {
+  const handleTaskEditing = (id) => () => setEditingTaskId(id); // Set the task ID being edited
+
+  const validateAndSaveTask = (id, value, fallbackValue) => {
     const trimmedValue = value.trim();
     if (trimmedValue.length === 0) {
-      onUpdateTask(id, { task: fallbackValue, editing: false });
+      onUpdateTask(id, { task: fallbackValue }); // Revert to fallback value
     } else {
-      onUpdateTask(id, { task: trimmedValue, editing: false });
+      onUpdateTask(id, { task: trimmedValue }); // Save updated value
     }
+    setEditingTaskId(null); //Exit editing mode
   };
 
   const handleTaskUpdate = (id, fallbackValue) => (event) => {
     if (event.nativeEvent.key === "Enter") {
-      validateAndSaveTask(id, event.target.value, fallbackValue, onUpdateTask);
+      validateAndSaveTask(id, event.target.value, fallbackValue);
     } else if (event.nativeEvent.key === "Escape") {
-      // Revert to fallback value and exit editing mode
-      onUpdateTask(id, { task: fallbackValue, editing: false });
+      setEditingTaskId(null); // Exit editing mode without saving
     }
   };
 
   const handleTaskBlur = (id, fallbackValue) => (event) => {
-    validateAndSaveTask(id, event.target.value, fallbackValue, onUpdateTask);
+    validateAndSaveTask(id, event.target.value, fallbackValue);
   };
 
   return (
@@ -51,7 +54,7 @@ function TaskList({
                 task.completed ? "incomplete" : "complete"
               }`}
             />
-            {!task.editing ? (
+            {editingTaskId !== task.id ? (
               <span
                 onDoubleClick={handleTaskEditing(task.id)}
                 className={`task-item-label ${
@@ -69,6 +72,7 @@ function TaskList({
                 onKeyUp={handleTaskUpdate(task.id, task.task)} // Handles Enter and Escape - Pass the saved task as fallback
                 onBlur={handleTaskBlur(task.id, task.task)} // Hanles blur to save or revert - Pass the saved task as fallback
                 autoFocus
+                aria-label={`Editing task ${task.task}`}
               />
             )}
           </div>

@@ -12,7 +12,6 @@ function TaskManagerPage() {
     deleteSingleTask,
     deleteAllTasks,
     toggleTaskCompletion,
-    markAsEditing,
     updateTask,
   } = useTasks();
 
@@ -27,7 +26,6 @@ function TaskManagerPage() {
             onDeleteSingleTask={deleteSingleTask}
             onDeleteAllTasks={deleteAllTasks}
             onToggleTaskCompletion={toggleTaskCompletion}
-            onMarkAsEditing={markAsEditing}
             onUpdateTask={updateTask}
           />
         ) : (
