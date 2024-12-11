@@ -7,7 +7,7 @@ import NoTasks from "../../components/no-tasks-display/NoTasks";
 
 function TaskManagerPage() {
   const {
-    tasks,
+    sortedTasks,
     addTask,
     deleteSingleTask,
     deleteAllTasks,
@@ -20,9 +20,9 @@ function TaskManagerPage() {
       <div className="task-manager">
         <h1>Task Manager</h1>
         <TaskInput onAddTask={addTask} />
-        {tasks.length > 0 ? (
+        {sortedTasks.length > 0 ? (
           <TaskList
-            tasks={tasks}
+            tasks={sortedTasks}
             onDeleteSingleTask={deleteSingleTask}
             onDeleteAllTasks={deleteAllTasks}
             onToggleTaskCompletion={toggleTaskCompletion}

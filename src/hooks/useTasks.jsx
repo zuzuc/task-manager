@@ -42,8 +42,20 @@ const useTasks = () => {
     );
   };
 
+  // Computed property: sorted tasks
+  const sortedTasks = [...tasks].sort((a, b) => {
+    if (a.completed !== b.completed) {
+      // Completed tasks go to the bottom
+      return a.completed ? 1 : -1;
+    }
+    // Sort by priority: High > Medium > Low
+    const priorityOrder = { high: 1, medium: 2, low: 3 };
+    return priorityOrder[a.priority] - priorityOrder[b.priority];
+  });
+
   return {
     tasks,
+    sortedTasks,
     setTasks,
     addTask,
     deleteSingleTask,

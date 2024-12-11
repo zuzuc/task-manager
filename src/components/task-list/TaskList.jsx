@@ -21,7 +21,7 @@ function TaskList({
     } else {
       onUpdateTask(id, { task: trimmedValue }); // Save updated value
     }
-    setEditingTaskId(null); //Exit editing mode
+    setEditingTaskId(null); // Exit editing mode
   };
 
   const handleTaskUpdate = (id, fallbackValue) => (event) => {
