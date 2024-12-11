@@ -10,7 +10,7 @@ function TaskInput({ onAddTask }) {
   };
 
   const handlePriorityChange = (e) => {
-    setTask(e.target.value);
+    setPriority(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -34,9 +34,9 @@ function TaskInput({ onAddTask }) {
     // Pass new task up to parent
     onAddTask(newTask);
 
-    //Reset input fields
-    setTask(""); //Reset the input
-    setPriority("low");
+    // Reset input fields
+    setTask(""); // Reset task input
+    setPriority("low"); // Reset priority to default
   };
 
   return (
