@@ -56,10 +56,6 @@ const useTasks = () => {
     return priorityOrder[a.priority] - priorityOrder[b.priority];
   });
 
-  const remainingTasks = (tasks) => {
-    return tasks.filter((task) => !task.completed).length;
-  };
-
   return {
     tasks,
     sortedTasks,
@@ -69,7 +65,6 @@ const useTasks = () => {
     deleteAllTasks,
     toggleTaskCompletion,
     updateTask,
-    remainingTasks,
   };
 };
 

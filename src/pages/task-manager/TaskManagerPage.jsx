@@ -13,7 +13,6 @@ function TaskManagerPage() {
     deleteAllTasks,
     toggleTaskCompletion,
     updateTask,
-    remainingTasks,
   } = useTasks();
 
   return (
@@ -28,7 +27,6 @@ function TaskManagerPage() {
             onDeleteAllTasks={deleteAllTasks}
             onToggleTaskCompletion={toggleTaskCompletion}
             onUpdateTask={updateTask}
-            onRemainingTasks={remainingTasks}
           />
         ) : (
           <NoTasks />
