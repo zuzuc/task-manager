@@ -95,3 +95,11 @@
 .delete-all-tasks-button:hover {
   background-color: darkred;
 }
+
+
+.tasks-remaining {
+  margin: 1em 0;
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+}

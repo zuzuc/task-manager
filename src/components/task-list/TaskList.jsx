@@ -11,7 +11,7 @@ function TaskList({
 }) {
   const [editingTaskId, setEditingTaskId] = useState(null); // Track which task is being edited
 
-  const remainingCount = tasks.filter((task) => !task.completed).length;
+  const taskItemsRemaining = tasks.filter((task) => !task.completed).length;
 
   const handleTaskToggle = (id) => () => onToggleTaskCompletion(id);
   const handleTaskDelete = (id) => () => onDeleteSingleTask(id);
@@ -108,7 +108,7 @@ function TaskList({
           </li>
         ))}
       </ul>
-      <TaskItemsRemaining remainingCount={remainingCount} />
+      <TaskItemsRemaining remainingCount={taskItemsRemaining} />
     </>
   );
 }
