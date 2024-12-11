@@ -33,7 +33,7 @@ const useTasks = () => {
     );
   };
 
-  // resets the editing property to false after the task has been updated
+  // Resets the editing property to false after the task has been updated
   const updateTask = (id, updatedTask) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -45,11 +45,14 @@ const useTasks = () => {
   // Computed property: sorted tasks
   const sortedTasks = [...tasks].sort((a, b) => {
     if (a.completed !== b.completed) {
-      // Completed tasks go to the bottom
+      // Completed tasks return 1 and move to the bottom of the list
+      // Uncompleted tasks return -1 and stay at the top
       return a.completed ? 1 : -1;
     }
     // Sort by priority: High > Medium > Low
     const priorityOrder = { high: 1, medium: 2, low: 3 };
+    // If task a has a higher priority, the result is negative and task a appears before task b
+    // If task b has a higher priority, the result is positive and, task b appears before task a
     return priorityOrder[a.priority] - priorityOrder[b.priority];
   });
 
