@@ -34,6 +34,19 @@
   color: gray;
 }
 
+.priority-high {
+  color: red;
+  font-weight: bold;
+}
+
+.priority-medium {
+  color: orange;
+}
+
+.priority-low {
+  color: green;
+}
+
 .task-item-input {
   margin-left: 8px;
   width: 100%;
