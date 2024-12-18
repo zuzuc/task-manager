@@ -10,9 +10,10 @@ function TaskManagerPage() {
     sortedTasks,
     addTask,
     deleteSingleTask,
-    deleteAllTasks,
     toggleTaskCompletion,
     updateTask,
+    clearCompletedTasks,
+    deleteAllTasks,
   } = useTasks();
 
   return (
@@ -24,9 +25,10 @@ function TaskManagerPage() {
           <TaskList
             tasks={sortedTasks}
             onDeleteSingleTask={deleteSingleTask}
-            onDeleteAllTasks={deleteAllTasks}
             onToggleTaskCompletion={toggleTaskCompletion}
             onUpdateTask={updateTask}
+            onClearCompletedTasks={clearCompletedTasks}
+            onDeleteAllTasks={deleteAllTasks}
           />
         ) : (
           <NoTasks />

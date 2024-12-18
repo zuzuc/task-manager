@@ -23,6 +23,8 @@ const useTasks = () => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
+  const clearCompletedTasks = () => setTasks((prevTasks) => [...prevTasks].filter((task) => !task.completed));
+
   const deleteAllTasks = () => setTasks([]);
 
   const toggleTaskCompletion = (id) => {
@@ -63,6 +65,7 @@ const useTasks = () => {
     addTask,
     deleteSingleTask,
     deleteAllTasks,
+    clearCompletedTasks,
     toggleTaskCompletion,
     updateTask,
   };

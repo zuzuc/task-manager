@@ -5,9 +5,10 @@ import TaskItemsRemaining from "../task-items-remaining/TaskItemsRemaining";
 function TaskList({
   tasks,
   onDeleteSingleTask,
-  onDeleteAllTasks,
   onToggleTaskCompletion,
   onUpdateTask,
+  onDeleteAllTasks,
+  onClearCompletedTasks,
 }) {
   const [editingTaskId, setEditingTaskId] = useState(null); // Track which task is being edited
 
@@ -42,14 +43,6 @@ function TaskList({
   return (
     <>
       <ul className="task-list">
-        <div className="delete-all-tasks-container">
-          <button
-            className="delete-all-tasks-button"
-            onClick={onDeleteAllTasks}
-          >
-            Delete All Tasks
-          </button>
-        </div>
         {tasks.map((task) => (
           <li className="task-item-container" key={task.id}>
             <div className="task-item">
@@ -109,6 +102,19 @@ function TaskList({
         ))}
       </ul>
       <TaskItemsRemaining remainingCount={taskItemsRemaining} />
+      <div className="clear-completed-tasks-container">
+        <button
+          className="clear-completed-tasks-button"
+          onClick={onClearCompletedTasks}
+        >
+          Clear Completed Tasks
+        </button>
+      </div>
+      <div className="delete-all-tasks-container">
+        <button className="delete-all-tasks-button" onClick={onDeleteAllTasks}>
+          Delete All Tasks
+        </button>
+      </div>
     </>
   );
 }
