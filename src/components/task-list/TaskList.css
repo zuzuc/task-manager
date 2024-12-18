@@ -79,9 +79,34 @@
   color: #333;
 }
 
-.clear-completed-tasks-button {
+.button {
+  margin-right: 6px;
   color: #6B7280;
+  font-size: 14px;
   background: white;
+  border: 1px solid lightgray;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  border: 1px solid lightgray;
+}
+
+.filter-button-active {
+  border: 1px solid lightgray;
+}
+
+.filter-button {
+  border: 1px solid white;
+}
+
+.clear-completed-tasks-button {
+  margin-top: 20px;
+  background: white;
+  color: #6B7280;
   border: 1px solid lightgray;
   padding: 6px;
   border-radius: 5px;
@@ -105,5 +130,5 @@
 }
 
 .delete-all-tasks-button:hover {
-  background-color: lightgray;
+  background-color: #FFCDD2;
 }

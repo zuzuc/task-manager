@@ -14,6 +14,7 @@ function TaskManagerPage() {
     updateTask,
     clearCompletedTasks,
     deleteAllTasks,
+    tasksFiltered,
   } = useTasks();
 
   return (
@@ -29,6 +30,7 @@ function TaskManagerPage() {
             onUpdateTask={updateTask}
             onClearCompletedTasks={clearCompletedTasks}
             onDeleteAllTasks={deleteAllTasks}
+            tasksFiltered={tasksFiltered}
           />
         ) : (
           <NoTasks />

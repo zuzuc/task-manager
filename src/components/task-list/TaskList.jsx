@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./TaskList.css";
 import TaskItemsRemaining from "../task-items-remaining/TaskItemsRemaining";
+import TaskFilters from "../task-filters/TaskFilters";
+import "./TaskList.css";
 
 function TaskList({
   tasks,
@@ -10,6 +11,19 @@ function TaskList({
   onDeleteAllTasks,
   onClearCompletedTasks,
 }) {
+
+  const [filter, setFilter] = useState('all');
+
+  // Filtered tasks based on the selected filter
+  const tasksFiltered = () => {
+    if (filter === 'active') {
+      return tasks.filter((task) => !task.completed);
+    } else if (filter === 'completed') {
+      return tasks.filter((task) => task.completed);
+    }
+    return tasks; 
+  };
+
   const [editingTaskId, setEditingTaskId] = useState(null); // Track which task is being edited
 
   const taskItemsRemaining = tasks.filter((task) => !task.completed).length;
@@ -43,7 +57,7 @@ function TaskList({
   return (
     <>
       <ul className="task-list">
-        {tasks.map((task) => (
+        {tasksFiltered().map((task) => (
           <li className="task-item-container" key={task.id}>
             <div className="task-item">
               <input
@@ -102,6 +116,9 @@ function TaskList({
         ))}
       </ul>
       <TaskItemsRemaining remainingCount={taskItemsRemaining} />
+      <TaskFilters  
+      filter={filter}
+      setFilter={setFilter}/>
       <div className="clear-completed-tasks-container">
         <button
           className="clear-completed-tasks-button"
