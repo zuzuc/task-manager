@@ -90,17 +90,16 @@
   cursor: pointer;
 }
 
-.button:hover,
-.button:active {
-  border: 1px solid lightgray;
-}
-
-.filter-button-active {
-  border: 1px solid lightgray;
-}
-
 .filter-button {
   border: 1px solid white;
+}
+
+.button:hover {
+  border: 1px solid lightgray;
+}
+
+.filter-button.active {
+  border: 1px solid lightgray;
 }
 
 .clear-completed-tasks-button {
