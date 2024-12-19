@@ -101,6 +101,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .filter-button:last-child {
+    margin-top:4px;
+  }
+}
+
 .filter-button.active {
   border: 1px solid lightgray;
 }
