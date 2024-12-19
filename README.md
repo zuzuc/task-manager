@@ -6,9 +6,21 @@ Clone the repository and install the dependencies
 `npm install`
 Start the frontend application locally
 `npm start`
-This will start the server on port 3000. If you navigate to http://localhost:3000, you should be able to see the app and use it.
+This runs the app in the development mode. Open http://localhost:3000 to view it in your browser.
 
 ## Packages and versions 
 - Node v21.7.1
 - npm 10.5.0
 - React Router v6
+
+## How to use it
+A simple yet functional task management application built with React. This app allows users to:
+
+- Add Tasks: Create new tasks with customizable priorities (low, medium, high).
+- Mark as Complete: Toggle tasks as complete/incomplete.
+- Edit Tasks: Inline editing of task titles directly in the list.
+- Filter Tasks: View all tasks, only active tasks, or completed tasks using filter buttons.
+- Delete Tasks: Remove individual tasks, all tasks, or only completed tasks.
+- Dynamic Priority Styling: Visual distinction of task priorities via color-coded labels.
+
+The app is state-managed and persists data using localStorage. It's lightweight, interactive, and great for personal productivity!
