@@ -51,7 +51,7 @@
   margin-left: 8px;
   width: 100%;
   border: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0,  0, 0.6);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.6);
   padding: 6px 8px;
   font-size: 16px;
 }
@@ -72,16 +72,20 @@
   height: 1.5rem;
 }
 
-.tasks-remaining {
-  margin: 1em 0;
-  font-size: 1em;
-  font-weight: bold;
-  color: #333;
+.filter-and-clear-container,
+.remaining-tasks-and-delete-all-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6b7280;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid lightgray;
 }
 
 .button {
   margin-right: 6px;
-  color: #6B7280;
+  color: #6b7280;
   font-size: 14px;
   background: white;
   border: 1px solid lightgray;
@@ -92,10 +96,9 @@
 
 .filter-button {
   border: 1px solid white;
-}
-
-.button:hover {
-  border: 1px solid lightgray;
+  &:hover {
+    border: 1px solid lightgray;
+  }
 }
 
 .filter-button.active {
@@ -103,31 +106,33 @@
 }
 
 .clear-completed-tasks-button {
-  margin-top: 20px;
-  background: white;
-  color: #6B7280;
-  border: 1px solid lightgray;
-  padding: 6px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer; 
-}
-
-.clear-completed-tasks-button:hover {
-  background-color: lightgray;
-}
-
-.delete-all-tasks-button {
-  margin-top: 20px;
-  background: white;
-  color: red;
-  border: 1px solid red;
   padding: 6px;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
+  background: white;
+  color: #6b7280;
+  border: 1px solid lightgray;
+  &:hover {
+    background-color: lightgray;
+  }
 }
 
-.delete-all-tasks-button:hover {
-  background-color: #FFCDD2;
+.delete-all-tasks-button {
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  background: white;
+  color: red;
+  border: 1px solid red;
+  &:hover {
+    background-color: #ffcdd2;
+  }
+}
+
+.tasks-remaining {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
 }

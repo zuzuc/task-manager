@@ -11,17 +11,16 @@ function TaskList({
   onDeleteAllTasks,
   onClearCompletedTasks,
 }) {
-
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
 
   // Filtered tasks based on the selected filter
   const tasksFiltered = () => {
-    if (filter === 'active') {
+    if (filter === "active") {
       return tasks.filter((task) => !task.completed);
-    } else if (filter === 'completed') {
+    } else if (filter === "completed") {
       return tasks.filter((task) => task.completed);
     }
-    return tasks; 
+    return tasks;
   };
 
   const [editingTaskId, setEditingTaskId] = useState(null); // Track which task is being edited
@@ -115,22 +114,27 @@ function TaskList({
           </li>
         ))}
       </ul>
-      <TaskItemsRemaining remainingCount={taskItemsRemaining} />
-      <TaskFilters  
-      filter={filter}
-      setFilter={setFilter}/>
-      <div className="clear-completed-tasks-container">
-        <button
-          className="clear-completed-tasks-button"
-          onClick={onClearCompletedTasks}
-        >
-          Clear Completed Tasks
-        </button>
+      <div className="filter-and-clear-container">
+        <TaskFilters filter={filter} setFilter={setFilter} />
+        <div>
+          <button
+            className="clear-completed-tasks-button"
+            onClick={onClearCompletedTasks}
+          >
+            Clear Completed Tasks
+          </button>
+        </div>
       </div>
-      <div className="delete-all-tasks-container">
-        <button className="delete-all-tasks-button" onClick={onDeleteAllTasks}>
-          Delete All Tasks
-        </button>
+      <div className="remaining-tasks-and-delete-all-container">
+        <TaskItemsRemaining remainingCount={taskItemsRemaining} />
+        <div>
+          <button
+            className="delete-all-tasks-button"
+            onClick={onDeleteAllTasks}
+          >
+            Delete All Tasks
+          </button>
+        </div>
       </div>
     </>
   );
