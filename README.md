@@ -2,11 +2,12 @@
 
 ## Setup
 
-Clone the repository and install the dependencies
-`npm install`
-Start the frontend application locally
-`npm start`
-This runs the app in the development mode. Open http://localhost:3000 to view it in your browser.
+Clone the repository and install the dependencies with `npm install`.
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Packages and versions 
 - Node v21.7.1
