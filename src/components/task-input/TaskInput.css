@@ -12,10 +12,17 @@
     border-radius: 0;
     cursor: pointer;
     font-family: RalewayThin, monospace;
-    font-size: 1vw;
     font-weight: bold;
     letter-spacing: 0.1vw;
     padding: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    input,
+    select,
+    button {
+      font-size: 1vw;
+    }
   }
 }
 
@@ -53,12 +60,6 @@
   .task-input-form {
     flex-direction: column; /* Stack items vertically */
     align-items: stretch; /* Stretch inputs to full width */
-
-    input,
-    select,
-    button {
-      font-size: 4vw;
-    }
   }
 
   .task-input,

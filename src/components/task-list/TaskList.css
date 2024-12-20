@@ -34,17 +34,25 @@
   color: gray;
 }
 
+.priority-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 0.5rem; /* Adds space between task title and priority */
+}
+
 .priority-high {
-  color: red;
-  font-weight: bold;
+  background-color: red;
 }
 
 .priority-medium {
-  color: orange;
+  background-color: orange;
 }
 
 .priority-low {
-  color: green;
+  background-color: green;
 }
 
 .task-item-input {
@@ -103,7 +111,7 @@
 
 @media (max-width: 768px) {
   .filter-button:last-child {
-    margin-top:4px;
+    margin-top: 4px;
   }
 }
 
