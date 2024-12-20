@@ -14,6 +14,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 - npm 10.5.0
 - React Router v6
 
+## Deployment
+It builds and runs on Netlify: https://taskfocus.netlify.app
+
+
 ## How to use it
 A simple yet functional task management application built with React. This app allows users to:
 
