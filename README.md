@@ -31,4 +31,4 @@ A simple yet functional task management application built with React. This app a
 The app is state-managed and persists data using localStorage. It's lightweight, interactive, and great for personal productivity!
 
 ## How to initialize the database
-The database can be initialized by running the following command: `rm database.db && touch database.db && node create.db.mjs && node seeding.db.mjs`
+The database can be initialized by running the following command: `rm database.db ; touch database.db && node create.db.mjs && node seeding.db.mjs`
