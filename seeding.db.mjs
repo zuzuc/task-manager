@@ -68,8 +68,6 @@ db.serialize(() => {
       (err) => {
         if (err) {
           console.error("Error inserting dynamic task:", err.message);
-        } else {
-          console.log("Dynamic task inserted successfully!");
         }
       }
     );
