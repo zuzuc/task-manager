@@ -37,30 +37,28 @@ db.serialize(() => {
   const priorities = ["low", "medium", "high"];
 
   function getRandomInt(max) {
-    return Math.floor(Math.random() * max + 1);
+    return Math.floor(Math.random() * max);
   }
 
   function getRandomName() {
-    const characters = ["a", "b", "c", "d", "e", "f", "i", "o", "u"];
-    return (
-      characters[getRandomInt(8)] +
-      characters[getRandomInt(8)] +
-      characters[getRandomInt(8)] +
-      characters[getRandomInt(8)] +
-      characters[getRandomInt(8)]
-    );
+    const characters = "abcdefghijklmnopqrstuvwxyz";
+    return Array.from(
+      { length: 5 },
+      () => characters[Math.floor(Math.random() * characters.length)]
+    ).join("");
   }
+  getRandomName();
 
   function getRandomTask() {
     return {
       name: getRandomName(),
-      priority: priorities[getRandomInt(2)],
-      status: getRandomInt(1),
+      priority: priorities[getRandomInt(3)],
+      status: getRandomInt(2),
     };
   }
 
   // Insert dynamic task
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 50; i++) {
     const task = getRandomTask();
     db.run(
       "INSERT INTO tasks (name, priority, status) VALUES (?, ?, ?)",
