@@ -47,7 +47,6 @@ db.serialize(() => {
       () => characters[Math.floor(Math.random() * characters.length)]
     ).join("");
   }
-  getRandomName();
 
   function getRandomTask() {
     return {
@@ -58,7 +57,7 @@ db.serialize(() => {
   }
 
   // Insert dynamic task
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 10; i++) {
     const task = getRandomTask();
     db.run(
       "INSERT INTO tasks (name, priority, status) VALUES (?, ?, ?)",
