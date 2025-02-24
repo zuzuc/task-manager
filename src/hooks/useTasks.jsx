@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 const useTasks = () => {
   const [tasks, setTasks] = useState(() => {
-    fetch('http://localhost:3001/db', {mode: 'no-cors'})
-    .then(data => console.log(data))
+    fetch('http://localhost:3001/db')
     .then(res => res.json())
+    .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
 
     // Initialize tasks from local storage or default to an empty array
