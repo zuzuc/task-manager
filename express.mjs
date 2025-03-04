@@ -20,10 +20,18 @@ app.get("/db/tasks", (req, res) => {
 // GET a single task by ID
 app.get("/db/tasks/:id", (req, res) => {
   const taskId = req.params.id; // Extract id from URL
-  db.all(`SELECt * FROM tasks WHERE id = ?`, [taskId], (error, rows) => {
+  db.all(`SELECT * FROM tasks WHERE id = ?`, [taskId], (error, rows) => {
     res.json(rows);
-  })
-})
+  });
+});
+
+// DELETE a single task by ID
+app.delete("/db/tasks/:id", (req, res) => {
+  const taskId = req.params.id;
+  db.run(`DELETE FROM tasks WHERE id = ?`, [taskId], function (error) {
+    res.json({ message: "Task deleted successfully" });
+  });
+});
 
 
 app.listen(PORT, () => {
