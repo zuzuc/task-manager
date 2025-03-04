@@ -1,6 +1,6 @@
-const express = require("express");
-const sqlite3 = require("sqlite3").verbose;
-const cors = require("cors");
+import express from "express";
+import sqlite3 from "sqlite3";
+import cors from "cors";
 
 const app = express();
 const PORT = 3001;
@@ -10,24 +10,22 @@ const db = new sqlite3.Database("database.db");
 app.use(cors());
 app.use(express.json()); // To parse JSON body
 
-app.get("/db", (req, res) => {
-  db.serialize(() => {
-    db.all(`SELECT * FROM tasks`, (error, rows) => {
-      res.json(rows);
-    });
+// GET all tasks
+app.get("/db/tasks", (req, res) => {
+  db.all(`SELECT * FROM tasks`, (error, rows) => {
+    res.json(rows);
   });
 });
 
-// app.get("/db", (req, res) => {
-//   db.all(`SELECT * FROM tasks`, (error, rows) => {
-//     if (error) {
-//       res.status(500).json({ error: error.message });
-//     } else {
-//       res.json(rows);
-//     }
-//   });
-// });
+// GET a single task by ID
+app.get("/db/tasks/:id", (req, res) => {
+  const taskId = req.params.id; // Extract id from URL
+  db.all(`SELECt * FROM tasks WHERE id = ?`, [taskId], (error, rows) => {
+    res.json(rows);
+  })
+})
+
 
 app.listen(PORT, () => {
-  console.log("Task Manager listening on http://localhost:${PORT}");
+  console.log("Task Manager listening");
 });

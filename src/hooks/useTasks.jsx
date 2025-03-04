@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const useTasks = () => {
   const [tasks, setTasks] = useState(() => {
-    fetch('http://localhost:3001/db')
+    fetch('http://localhost:3001/db/tasks')
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
