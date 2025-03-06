@@ -27,6 +27,8 @@ const useTasks = () => {
   }
 
   const addTask = async (newTask) => {
+    // @todo fetch is missing data so that express can save a new task
+    // let’s pass newTask to the fetch.
     await fetch(`http://localhost:3001/db/tasks`, { method: `POST` });
     setTasks((prevTasks) => [...prevTasks, newTask]); // Adds the new task to the tasks array
   };

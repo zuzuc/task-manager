@@ -25,6 +25,11 @@ app.get("/db/tasks/:id", (req, res) => {
   });
 });
 
+// @todo Create a post endpoint that expects a task in json form, parses that json
+// and creates a new row in the tasks table with that data
+
+// @todo Create a delete endpoint that deletes all the tasks
+
 // DELETE a single task by ID
 app.delete("/db/tasks/:id", (req, res) => {
   const taskId = req.params.id;
