@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { Task } from "./../../Task.js";
 import "./TaskInput.css";
 
 function TaskInput({ onAddTask }) {
-  const [task, setTask] = useState("");
+  const [taskName, setTaskName] = useState("");
   const [priority, setPriority] = useState("low"); //Optional priority field
 
   const handleTaskChange = (e) => {
-    setTask(e.target.value);
+    setTaskName(e.target.value);
   };
 
   const handlePriorityChange = (e) => {
@@ -18,24 +19,28 @@ function TaskInput({ onAddTask }) {
 
     // Don´t want user to add empty strings
     // If task is empty alert the user and cancel
-    if (task.trim() === "") {
+    if (taskName.trim() === "") {
       alert("Please enter a task!");
       return;
     }
 
     // Create a new task object
-    const newTask = {
-      id: Date.now(),
-      task: task,
-      priority: priority,
-      completed: false,
-    };
+    const newTask = new Task(
+      Date.now(),
+      taskName,
+      priority,
+      // @todo Fix it to use the correct date
+      // or let the db do it
+      "2025-03-06 10:37:27",
+      null,
+      false
+    );
 
     // Pass new task up to parent
     onAddTask(newTask);
 
     // Reset input fields
-    setTask(""); // Reset task input
+    setTaskName(""); // Reset task input
     setPriority("low"); // Reset priority to default
   };
 
@@ -46,7 +51,7 @@ function TaskInput({ onAddTask }) {
           id="task"
           type="text"
           className="task-input"
-          value={task}
+          value={taskName}
           onChange={handleTaskChange}
           placeholder="Enter a new task"
           aria-required="true"

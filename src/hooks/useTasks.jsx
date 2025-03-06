@@ -1,25 +1,30 @@
 import { useState, useEffect } from "react";
+import { Task } from "../Task";
 
 const useTasks = () => {
   const [tasks, setTasks] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:3001/db/tasks")
       .then((res) => res.json())
-      .then((data) => setTasks(data))
+      .then((data) => setTasks(tasksFromDb(data)))
       .catch((error) => console.error("Error:", error));
-  }, [tasks]);
+  }, []);
 
-  // Initialize tasks from local storage or default to an empty array
-  // const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-  // return savedTasks.map((task) => ({
-  //   ...task,
-  //   editing: false, // Ensure editing is reset to false on load
-  // }));
-
-  // Save tasks to local storage whenever they change
-  // useEffect(() => {
-  //   localStorage.setItem("tasks", JSON.stringify(tasks));
-  // }, [tasks]);
+  const tasksFromDb = (rawData) => {
+    const fancyTasks = [];
+    for (const row of rawData) {
+      const fancyTask = new Task(
+        row.id,
+        row.name,
+        row.priority,
+        row.created_at,
+        row.updated_at,
+      )
+      fancyTasks.push(fancyTask)
+    }
+    return fancyTasks;
+  }
 
   const addTask = async (newTask) => {
     await fetch(`http://localhost:3001/db/tasks`, { method: `POST` });
@@ -32,8 +37,10 @@ const useTasks = () => {
   };
 
   const clearCompletedTasks = () =>
+    // @todo Also give the ability to delete all tasks permanently (fetch…)
     setTasks((prevTasks) => [...prevTasks].filter((task) => !task.completed));
 
+  // @todo Also give the ability to delete all tasks permanently (fetch…)
   const deleteAllTasks = () => setTasks([]);
 
   const toggleTaskCompletion = (id) => {
