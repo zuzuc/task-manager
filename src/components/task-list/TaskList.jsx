@@ -74,7 +74,7 @@ function TaskList({
                     task.completed ? "line-through" : ""
                   }`}
                 >
-                  {task.title} {task.task}{" "}
+                  {task.name} {task.task}{" "}
                   <span className={`priority-badge priority-${task.priority}`}>
                     {task.priority}
                   </span>
