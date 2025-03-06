@@ -1,34 +1,38 @@
 import { useState, useEffect } from "react";
 
 const useTasks = () => {
-  const [tasks, setTasks] = useState(() => {
-    fetch('http://localhost:3001/db/tasks')
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-
-    // Initialize tasks from local storage or default to an empty array
-    const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    return savedTasks.map((task) => ({
-      ...task,
-      editing: false, // Ensure editing is reset to false on load
-    }));
-  });
-
-  // Save tasks to local storage whenever they change
+  const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    fetch("http://localhost:3001/db/tasks")
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((error) => console.error("Error:", error));
   }, [tasks]);
 
-  const addTask = (newTask) => {
+  // Initialize tasks from local storage or default to an empty array
+  // const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+  // return savedTasks.map((task) => ({
+  //   ...task,
+  //   editing: false, // Ensure editing is reset to false on load
+  // }));
+
+  // Save tasks to local storage whenever they change
+  // useEffect(() => {
+  //   localStorage.setItem("tasks", JSON.stringify(tasks));
+  // }, [tasks]);
+
+  const addTask = async (newTask) => {
+    await fetch(`http://localhost:3001/db/tasks`, { method: `POST` });
     setTasks((prevTasks) => [...prevTasks, newTask]); // Adds the new task to the tasks array
   };
 
-  const deleteSingleTask = (id) => {
+  const deleteSingleTask = async (id) => {
+    await fetch(`http://localhost:3001/db/tasks/${id}`, { method: `DELETE` });
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
-  const clearCompletedTasks = () => setTasks((prevTasks) => [...prevTasks].filter((task) => !task.completed));
+  const clearCompletedTasks = () =>
+    setTasks((prevTasks) => [...prevTasks].filter((task) => !task.completed));
 
   const deleteAllTasks = () => setTasks([]);
 
